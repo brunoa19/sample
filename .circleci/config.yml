@@ -1,0 +1,12 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/golang:1.12.5
+
+    steps:
+      - checkout
+
+      - run:
+          name: Commit to Shipa
+          command: git push ssh://git@34.66.65.123.nip.io:2222/circle.git master
