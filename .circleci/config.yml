@@ -13,4 +13,4 @@ jobs:
 
       - run:
           name: Commit to Shipa
-          command: git push ssh://git@34.66.65.123.nip.io:2222/circle.git master | y
+          command: git push ssh://git@34.66.65.123.nip.io:2222/circle.git master -o StrictHostKeyChecking=no
