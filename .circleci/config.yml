@@ -7,6 +7,10 @@ jobs:
     steps:
       - checkout
 
+      - add_ssh_keys:
+          fingerprints:
+            - "15:93:6f:74:af:21:40:f9:b8:a1:f9:e3:4a:78:43:af"
+
       - run:
           name: Commit to Shipa
           command: git push ssh://git@34.66.65.123.nip.io:2222/circle.git master | y
