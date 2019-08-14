@@ -1,12 +1,17 @@
 version: 2
-language: python
-python:
-  - "2.7"
-
 jobs:
-  include:
-    - stage: build
-      script: 'python -m unittest discover'
-
-    - stage: deploy
-      script: 'pip install shipa-ci && shipa-ci --app=circle-ci --server=$SHIPASERVER --token=$TOKEN'
+  build:
+    ...
+  deploy:
+    docker:
+      - image: circleci/python:3.6.4
+    steps:
+      - checkout
+      - run:
+          name: Install Python
+          command: |
+            pip install go
+      - run:
+          name: Commit to Shipa
+          command: |
+            pip install shipa-ci && shipa-ci --app=circle-ci --server=$SHIPASERVER --token=$TOKEN
