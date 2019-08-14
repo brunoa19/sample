@@ -1,16 +1,12 @@
 version: 2
+language: python
+python:
+  - "2.7"
+
 jobs:
-  build:
-    docker:
-      - image: circleci/golang:1.12.5
+  include:
+    - stage: build
+      script: 'pip install -r requirements.txt && python -m unittest discover'
 
-    steps:
-      - checkout
-
-      - add_ssh_keys:
-          fingerprints:
-            - "15:93:6f:74:af:21:40:f9:b8:a1:f9:e3:4a:78:43:af"
-
-      - run:
-          name: Commit to Shipa
-          command: git push ssh://git@34.66.65.123.nip.io:2222/circle.git master -o StrictHostKeyChecking=no
+    - stage: deploy
+      script: 'pip install shipa-ci && shipa-ci --app=circle-ci --server=$SHIPASERVER --token=$TOKEN'
