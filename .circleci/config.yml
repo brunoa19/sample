@@ -17,7 +17,7 @@ jobs: # A basic unit of work in a run
             sudo pip install shipa-ci
       - run:
           command: |
-            sudo shipa-ci --app=circle-ci --server=$SHIPASERVER --token=$TOKEN
+            sudo shipa-ci --app=circle-ci --server=http://34.66.65.123:8080 --token=f419dc21921cc35a3567bd031cce49713659eca52a374b3d5a7c37f21303d275
       - store_test_results: # Upload test results for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
           path: test-results
       - store_artifacts: # Upload test summary for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
