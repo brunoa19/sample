@@ -12,6 +12,7 @@ jobs: # A basic unit of work in a run
       - run: sudo chown -R circleci:circleci /usr/local/lib/python3.6/site-packages
       - run: sudo chown -R circleci:circleci ~/sample
       - run: sudo pip install -r requirements.txt && python -m unittest discover
+      - run: gem install bundler -v 1.14.5
       - run:
           command: |
             sudo pip install shipa-ci
